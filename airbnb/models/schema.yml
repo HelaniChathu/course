@@ -1,7 +1,11 @@
 models:
   - name: dim_listings_cleansed
+    data_tests:
+      - minimum_row_count:
+          arguments:
+            minimum_row_count: 1000
+          severity: error   
     columns:
-
      - name: listing_id
        data_tests:
          - unique
@@ -23,6 +27,10 @@ models:
                         'Private room',
                         'Shared room',
                         'Hotel room']
+
+     - name: minimum_nights
+       data_tests: 
+          - positive_values 
 
   - name: dim_hosts_cleansed
     config:
